@@ -64,11 +64,11 @@ public final class TestForFabric implements ContractInterface {
      * @return the asset found on the ledger if there was one
      */
     @Transaction(intent = Transaction.TYPE.EVALUATE)
-    public String setValueOfFabric_query(final Context ctx) {
+    public StorageData setValueOfFabric_query(final Context ctx) {
         ChaincodeStub stub = ctx.getStub();
-        String storedData = stub.getStringState("storageData");
+        String storedDataJSON = stub.getStringState("storageData");
 
-        return genson.deserialize(storedData, String.class);
+        return genson.deserialize(storedDataJSON, StorageData.class);
     }
 
     /**
@@ -96,11 +96,11 @@ public final class TestForFabric implements ContractInterface {
      * @return the asset found on the ledger if there was one
      */
     @Transaction(intent = Transaction.TYPE.EVALUATE)
-    public String getValueOfFabric(final Context ctx) {
+    public StorageData getValueOfFabric(final Context ctx) {
         ChaincodeStub stub = ctx.getStub();
-        String storedData = stub.getStringState("storageData");
+        String storedDataJSON = stub.getStringState("storageData");
 
-        return genson.deserialize(storedData, String.class);
+        return genson.deserialize(storedDataJSON, StorageData.class);
     }
 
 }
